@@ -15,7 +15,7 @@ class Config:
 
     @property
     def blob(self):
-        return self.default_blob()
+        return self.default_blob
 
 
 # I DECIDED FOR NOW THAT I DON'T WANT TO HAVE CONFIG CAPABILITY.

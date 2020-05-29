@@ -56,8 +56,8 @@ setup(
     zip_safe=False,
     entry_points={
         'console_scripts': [
-            'pd.docker_image_builder = dockerproject.build:main',
-            'pd.initialize = dockerproject.initialize:main',
+            'pd.docker_image_builder = pydockerize.build:main',
+            'pd.initialize = pydockerize.initialize:main',
         ],
     }
 

@@ -1,0 +1,46 @@
+###############################################################################
+# Don't change this section of the compose file                               #
+                                                                              #
+version: '3.4'                                                                #
+volumes:                                                                      #
+    pydockerize_opt:                                                          #
+        external:                                                             #
+            name: pydockerize_opt                                             #
+    pydockerize_ssh:                                                          #
+        external:                                                             #
+            name: pydockerize_ssh                                             #
+x-pydockerize-common:                                                         #
+    common:                                                                   #
+        &pydockerize-common                                                   #
+        image: {image_name}:latest                                            #
+        privileged: true                                                      #
+        volumes:                                                              #
+           - pydockerize_opt:/opt:delegated                                   #
+           - pydockerize_ssh:/root/.ssh:delegated                             #
+           - ~:/host:delegated                                                #
+           - .:/project:delegated                                             #
+###############################################################################
+
+
+###############################################################################
+# Modify your services below to suite your needs
+#
+#  You *MUST* provide a service named "shell" that runs bash
+#
+###############################################################################
+
+services:
+    shell:
+        <<: *pydockerize-common
+        command: /bin/bash
+        ports:
+            - "5555:5555"
+            - "8000:8000"
+            - "8888:8888"
+
+
+    notebook:
+        <<: *pydockerize-common
+        command: bash -c 'source ~/.bashrc && jupyter notebook --allow-root --ip 0.0.0.0 --port 9999 --NotebookApp.iopub_data_rate_limit=10000000000'
+        ports:
+            - "9999:9999"

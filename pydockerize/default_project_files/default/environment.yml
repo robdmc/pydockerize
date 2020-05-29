@@ -1,0 +1,86 @@
+# Run this to create: conda env create --force -f environment.yml
+# To update with any changes:  conda env update -f environment.yml,
+#
+# This default environment contains the kitchen sink.  You will probably
+# want to remove packages that you won't be using in your project
+
+# None of the packages below are pinned to version numbers. This is
+# so that fresh environment builds can always provide the latest versions
+# of the packages.
+# You may want to apply pinned versions to make your environment more stable.
+
+name: {env_name}
+channels:
+    - conda-forge
+dependencies:
+    # These are packages installed using conda
+    - python=3.7
+    - astropy
+    - dask
+    - datashader
+    - folium
+    - geocoder
+    - jupyterlab
+    - mkl-service
+    - nbconvert
+    - numpy
+    - pandoc
+    - pip
+    - scikit-learn
+    - scipy
+    - statsmodels
+    - sympy
+    - xarray
+
+    # These packages are installed with pip
+    - pip:
+        - altair
+        - arrow
+        - arviz
+        - attrs
+        - click
+        - cookiecutter
+        - corner
+        - cryptography
+        - cython
+        - daiquiri
+        - dataset
+        - django
+        - django-extensions
+        - easier
+        - emcee
+        - flake8
+        - fleming
+        - folium
+        - fuzzypicker
+        - gspread
+        - holoviews[recommended]
+        - hvplot
+        - inflection
+        - joblib
+        - jupyter
+        - lifelines
+        - magic-wormhole
+        - networkx
+        - nose
+        - oauth2client
+        - pandashells[full]
+        - panel
+        - patsy
+        - pdbpp
+        - pdvega
+        - psutil
+        - pymc3
+        - pytest
+        - python-dateutil
+        - requests
+        - seaborn
+        - simple-salesforce
+        - snakemake
+        - streamz
+        - tables
+        - tdigest
+        - hvplot
+        - web-pdb
+        - wrapt
+        - yfinance

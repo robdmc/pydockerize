@@ -18,6 +18,8 @@ def get_version():
 
 
 install_requires = [
+    'click',
+    'pyyaml',
 ]
 
 tests_require = [
@@ -52,4 +54,11 @@ setup(
     tests_require=tests_require,
     extras_require=extras_require,
     zip_safe=False,
+    entry_points={
+        'console_scripts': [
+            'pd.docker_image_builder = dockerproject.build:main',
+            'pd.initialize = dockerproject.initialize:main',
+        ],
+    }
+
 )

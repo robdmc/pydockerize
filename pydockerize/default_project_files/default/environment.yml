@@ -25,7 +25,9 @@ dependencies:
     - nbconvert
     - numpy
     - pandoc
+    - pgcli
     - pip
+    - psycopg2
     - scikit-learn
     - scipy
     - statsmodels

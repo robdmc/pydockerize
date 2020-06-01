@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # Change into the same directory as this script
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DIR="$( cd "$( dirname "${{BASH_SOURCE[0]}}" )" >/dev/null 2>&1 && pwd )"
 cd "$DIR"
 
 

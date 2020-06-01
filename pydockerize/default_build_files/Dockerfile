@@ -38,3 +38,9 @@ touch /docker/container_files/root/.gitconfig && \
 touch /docker/container_files/root/.bash_history && \
 ln -s /docker/container_files/root/.gitconfig /root && \
 ln -s /docker/container_files/root/.bash_history /root
+
+
+# Build node for jupyter-lab
+RUN curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && \
+bash nodesource_setup.sh && \
+apt install -y nodejs

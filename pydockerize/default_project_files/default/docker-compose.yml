@@ -37,7 +37,7 @@ services:
             - "5555:5555"
             - "8000:8000"
             - "8888:8888"
-
+            - "9999:9999"
 
     notebook:
         <<: *pydockerize-common

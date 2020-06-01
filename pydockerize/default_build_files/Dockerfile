@@ -44,3 +44,8 @@ ln -s /docker/container_files/root/.bash_history /root
 RUN curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && \
 bash nodesource_setup.sh && \
 apt install -y nodejs
+
+
+# Set timezone to eastern
+RUN echo "America/New_York" > /etc/timezone && \
+dpkg-reconfigure -f noninteractive tzdata

@@ -33,6 +33,7 @@ pd.initialize -d myproject
 ```
 
 # View/Modify package specifications
+You don't have to make any changes, but the default is a pretty minimal data-science install.
 ```bash
 cd myproject
 vim environment.yml

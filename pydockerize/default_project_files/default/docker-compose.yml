@@ -3,20 +3,20 @@
                                                                               #
 version: '3.4'                                                                #
 volumes:                                                                      #
-    pydockerize_opt:                                                          #
+    pydockerize_opt_{env_name}:                                               #
         external:                                                             #
-            name: pydockerize_opt                                             #
-    pydockerize_ssh:                                                          #
+            name: pydockerize_opt_{env_name}                                  #
+    pydockerize_ssh_{env_name}:                                               #
         external:                                                             #
-            name: pydockerize_ssh                                             #
+            name: pydockerize_ssh_{env_name}                                  #
 x-pydockerize-common:                                                         #
     common:                                                                   #
         &pydockerize-common                                                   #
         image: {image_name}:latest                                            #
         privileged: true                                                      #
         volumes:                                                              #
-           - pydockerize_opt:/opt:delegated                                   #
-           - pydockerize_ssh:/root/.ssh:delegated                             #
+           - pydockerize_opt_{env_name}:/opt:delegated                        #
+           - pydockerize_ssh_{env_name}:/root/.ssh:delegated                  #
            - ~:/host:delegated                                                #
            - .:/project:delegated                                             #
 ###############################################################################

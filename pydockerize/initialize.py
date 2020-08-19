@@ -90,13 +90,16 @@ class Initializer:
         name_on_container = os.path.join('/project', os.path.relpath(name_on_host, self.project_dir))
         compose_file = os.path.join(self.project_dir, 'docker-compose.yml')
 
+        opt_volume = f'pydockerize_opt_{self.env_name}'
+        ssh_volume = f'pydockerize_ssh_{self.env_name}'
+
         if with_volume_rebuild:
             commands = [
                 '#! /usr/bin/env bash',
-                'docker volume rm pydockerize_opt 2>/dev/null || true',
-                'docker volume create pydockerize_opt',
-                'docker volume rm pydockerize_ssh 2>/dev/null || true',
-                'docker volume create pydockerize_ssh',
+                f'docker volume rm {opt_volume} 2>/dev/null || true',
+                f'docker volume create {opt_volume}',
+                f'docker volume rm {ssh_volume} 2>/dev/null || true',
+                f'docker volume create {ssh_volume}',
             ]
         else:
             commands = ['#! /usr/bin/env bash']

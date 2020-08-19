@@ -85,21 +85,26 @@ class Initializer:
         file_name = os.path.join(self.hook_path, 'bash_hooks.sh')
         self._make_script(commands, file_name, executable=True)
 
+    @property
+    def opt_volume(self):
+        return f'pydockerize_opt_{self.env_name}'
+
+    @property
+    def ssh_volume(self):
+        return f'pydockerize_ssh_{self.env_name}'
+
     def _make_compose_script(self, compose_script, target_script, with_volume_rebuild=False):
         name_on_host = os.path.join(self.container_file_path, compose_script)
         name_on_container = os.path.join('/project', os.path.relpath(name_on_host, self.project_dir))
         compose_file = os.path.join(self.project_dir, 'docker-compose.yml')
 
-        opt_volume = f'pydockerize_opt_{self.env_name}'
-        ssh_volume = f'pydockerize_ssh_{self.env_name}'
-
         if with_volume_rebuild:
             commands = [
                 '#! /usr/bin/env bash',
-                f'docker volume rm {opt_volume} 2>/dev/null || true',
-                f'docker volume create {opt_volume}',
-                f'docker volume rm {ssh_volume} 2>/dev/null || true',
-                f'docker volume create {ssh_volume}',
+                f'docker volume rm {self.opt_volume} 2>/dev/null || true',
+                f'docker volume create {self.opt_volume}',
+                f'docker volume rm {self.ssh_volume} 2>/dev/null || true',
+                f'docker volume create {self.ssh_volume}',
             ]
         else:
             commands = ['#! /usr/bin/env bash']
@@ -110,6 +115,16 @@ class Initializer:
         ])
 
         file_name = os.path.join(self.project_dir, target_script)
+        self._make_script(commands, file_name, executable=True)
+
+    def make_uninstall_script(self):
+        commands = [
+            '#! /usr/bin/env bash',
+            f'docker volume rm {self.opt_volume} 2>/dev/null || true',
+            f'docker volume rm {self.ssh_volume} 2>/dev/null || true',
+            f'docker network rm {os.path.basename(self.project_dir)}_default 2>/dev/null || true',
+        ]
+        file_name = os.path.join(self.project_dir, 'pd.uninstall_project')
         self._make_script(commands, file_name, executable=True)
 
     def make_build_env_script(self):
@@ -190,6 +205,9 @@ class Initializer:
 
         # Create scripts for running services
         self.make_service_scripts()
+
+        # Make a script for uninstalling
+        self.make_uninstall_script()
 
 
 @click.command()

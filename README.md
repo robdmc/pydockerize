@@ -1,6 +1,6 @@
 # pydockerize
 `pydockerize` is a tool for creating and distribution dockerized python projects.  The main focus of its design
-has been to quickly get up and running with a full complement of data-science tools ready for use.  ** It is still a work in progress. ** 
+has been to quickly get up and running with a full complement of data-science tools ready for use.  **It is still a work in progress.** 
 
 `pydockerize` is a small, pure-python package with only two dependencies,
 [pyyaml](https://github.com/yaml/pyyaml), and [click](https://palletsprojects.com/p/click/).  Installation will give put

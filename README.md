@@ -55,9 +55,15 @@ You are now ready to create/run notebooks with your project environment.  The de
 for the notebook will be your project directory which has been mounted into the container.
 
 ```bash
+# Open Jupyter pointing to the project directory on your host
 pd.run_note_book -p  # The -p is important.  It maps ports from container to host.
 ```
+or
 
+```bash
+# Drop into a bash shell on the container
+pd.run_shell. # without the -p, no port binding happens, so hosts can't connect to your services
+```
 
 Note that the following directories are also mounted into the container from your host computer.
 * `/host -> your_host_home_directory`

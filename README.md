@@ -25,7 +25,7 @@ pip install pydockerize
 ```
 
 # Create a project
-Create a project in a directory named `myproject`.  this directory will contain an environment file for specifying
+Here are the stpes for creating a project in a directory named `myproject`.  this directory will contain an environment file for specifying
 the python packages you want to use, and a docker-compose file for specifying what services you want to run.  You 
 will also see a couple default commands in the directory named `pd.run_notebook` and `pd.run_shell`.  Thes will do
 what their names imply and run either a jupyter notebook or bash shell in a container.

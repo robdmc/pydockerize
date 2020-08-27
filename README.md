@@ -54,12 +54,14 @@ the environment.  You can just run `pd.update_env`.
 You are now ready to create/run notebooks with your project environment.  The default directory
 for the notebook will be your project directory which has been mounted into the container.
 
-Note that the following directories are also mounted into the container from your host computer.
-* `/host -> your_host_home_directory`
-* `/project -> your_project_directory`
 ```bash
 pd.run_note_book -p  # The -p is important.  It maps ports from container to host.
 ```
+
+
+Note that the following directories are also mounted into the container from your host computer.
+* `/host -> your_host_home_directory`
+* `/project -> your_project_directory`
 
 
 # How it works

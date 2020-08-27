@@ -72,6 +72,10 @@ Note that the following directories are also mounted into the container from you
 
 # How it works
 The `pd.build_env` does the following:
+* Pulls a prebuilt ubuntu image from docker-hub.
 * Creates a docker volume that will persist you python environment.
-* Use miniconda to create you python environment and install requested packages
+* Use miniconda to create you python environment and install requested packages into your container.
+
+The `pd.run_*` commands simply run services described in the docker-compose.yml file.  You can edit
+this file to add any additional services you desire.
 
